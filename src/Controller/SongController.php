@@ -13,7 +13,7 @@ class SongController extends AbstractController
     public function index(TwelveDaysService $daysService): Response
     {
         return $this->render('song/index.html.twig', [
-            'song' => $daysService,
+            'song' => $daysService->song(),
         ]);
     }
 }
