@@ -6,7 +6,7 @@ class TwelveDaysService
 {
     public const string TEMPLATE = 'On the %s day of Christmas my true love gave to me: %s.';
 
-    public const PRESENTS = [
+    public const array PRESENTS = [
         'first' => 'a Partridge in a Pear Tree',
         'second' => 'two Turtle Doves',
         'third' => 'three French Hens',
