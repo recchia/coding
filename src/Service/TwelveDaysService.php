@@ -29,17 +29,24 @@ class TwelveDaysService
 
         foreach (self::PRESENTS as $key => $value) {
             $this->presentsString[] = $value;
-            $array = array_reverse($this->presentsString);
-            $last_present = array_pop($array);
-            $presents = implode(', ', $array);
-            $connector = $isFirst ? '' : ', and ';
-            $presents.=  $connector . $last_present;
+            $presents = $this->buildPresents($this->presentsString, $isFirst);
             $stringSong.= sprintf(self::TEMPLATE, $key, $presents) . '<br><br>';
             $isFirst = false;
         }
 
         return $stringSong;
 
+    }
+
+    private function buildPresents(array $presents, bool $isFirst = false): string
+    {
+        $array = array_reverse($presents);
+        $last_present = array_pop($array);
+        $presents = implode(', ', $array);
+        $connector = $isFirst ? '' : ', and ';
+        $presents.=  $connector . $last_present;
+
+        return $presents;
     }
 
 }
