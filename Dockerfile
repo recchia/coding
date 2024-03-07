@@ -15,12 +15,12 @@ WORKDIR /app
 
 # persistent / runtime deps
 # hadolint ignore=DL3018
-RUN apk add --no-cache \
+RUN apt-get update && apt-get install -y --no-install-recommends \
 		acl \
 		file \
 		gettext \
 		git \
-	;
+    	&& rm -rf /var/lib/apt/lists/*
 
 RUN set -eux; \
 	install-php-extensions \
